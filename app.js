@@ -105,26 +105,28 @@ function clearAll() {
 // ======================================================
 
 async function callAI(contractText) {
-
-  const response = await fetch(
-    "https://riskclause.bluher.workers.dev",
-    {
+  try {
+    const response = await fetch("https://riskclause.bluher.workers.dev", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({
-        text: contractText
-      })
+      body: JSON.stringify({ text: contractText })
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      console.error("Worker error:", data);
+      throw new Error(data?.error || "Worker error");
     }
-  );
 
-  if (!response.ok) {
-    const err = await response.text();
-    throw new Error(err);
+    return data;
+
+  } catch (err) {
+    console.error("Fetch failed:", err);
+    throw err;
   }
-
-  return await response.json();
 }
 
 // ======================================================
