@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://riskclause.bluher.workers.dev/sitemap.xml
+Sitemap: https://bluher.github.io/RiskClause//sitemap.xml
