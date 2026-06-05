@@ -189,7 +189,7 @@ function renderResult(r, rawText) {
 
   const scoreClass = verdictKey;
   const score = Math.min(100, Math.max(0, r.score || 0));
-  const nbMots = Math.round(rawText.length / 5);
+  const nbChars = rawText.length;
 
   const clauses = r.clauses || [];
   const hautes = clauses.filter((c) => c.severite === "haute");
