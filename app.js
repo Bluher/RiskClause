@@ -61,7 +61,7 @@ async function loadPDF(file) {
     const text = await lirePDF(file);
     document.getElementById("contractText").value = text;
     updateCharCount(text);
-    setStatus(`PDF chargé — ${Math.round(text.length / 5)} mots`);
+    setStatus(`PDF chargé — ${text.length.toLocaleString("fr-FR")} caractères`);
   } catch (err) {
     setStatus("Erreur lors de la lecture du PDF.");
     console.error(err);
@@ -259,8 +259,8 @@ function renderResult(r, rawText) {
           <div class="kpi-value" style="color:${kpiColor(moyennes.length,[1,3])}">${moyennes.length}</div>
         </div>
         <div class="kpi">
-          <div class="kpi-label">Mots analysés</div>
-          <div class="kpi-value" style="font-size:16px;color:var(--text-2)">${nbMots.toLocaleString("fr-FR")}</div>
+          <div class="kpi-label">Caractères analysés</div>
+          <div class="kpi-value" style="font-size:16px;color:var(--text-2)">${nbChars.toLocaleString("fr-FR")}</div>
         </div>
       </div>
 
